@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Servicios Creativos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="formulario-container">
+    <form id="formulario" action="https://formsubmit.co/marrotcaptures@gmail.com" method="POST">
+        <h1><center>CONFIGURA TU PACK</center></h1>
+      <h2>Sesiones de Fotos</h2>
+      <input type="radio" id="foto1" name="sesion-foto" value="80">
+      <label for="foto1">1 – €80</label>
+
+      <input type="radio" id="foto2" name="sesion-foto" value="130">
+      <label for="foto2">2 – €130</label>
+
+      <input type="radio" id="foto3" name="sesion-foto" value="150">
+      <label for="foto3">3 – €150</label>
+
+      <input type="radio" id="foto4" name="sesion-foto" value="200">
+      <label for="foto4">4 – €200</label>
+
+      <h2>Escenas de Videos</h2>
+      <input type="radio" id="video1" name="escena-video" value="80">
+      <label for="video1">1 – €80</label>
+
+      <input type="radio" id="video2" name="escena-video" value="130">
+      <label for="video2">2 – €130</label>
+
+      <input type="radio" id="video3" name="escena-video" value="150">
+      <label for="video3">3 – €150</label>
+
+      <input type="radio" id="video4" name="escena-video" value="200">
+      <label for="video4">4 – €200</label>
+
+      <h2>Castings</h2>
+      <input type="radio" id="casting1" name="casting" value="40">
+      <label for="casting1">1 – €40</label>
+
+      <input type="radio" id="casting2" name="casting" value="65">
+      <label for="casting2">2 – €65</label>
+
+      <input type="radio" id="casting3" name="casting" value="85">
+      <label for="casting3">3 – €85</label>
+
+      <input type="radio" id="casting4" name="casting" value="100">
+      <label for="casting4">4 – €100</label>
+
+      <input type="radio" id="casting5" name="casting" value="110">
+      <label for="casting5">5 – €110</label>
+
+      <h2>Página Web</h2>
+      <input type="radio" id="web1" name="pagina-web" value="65">
+      <label for="web1">Si – €65</label>
+
+      <input type="radio" id="web2" name="pagina-web" value="0">
+      <label for="web2">No – €0</label>
+
+      <button type="button" id="boton-enviar">Enviar</button>
+    </form>
+    <div id="total">💰 Total: €0</div>
+  </div>
+
+  <script>
+    function calcularTotal() {
+      let total = 0;
+
+      const grupos = ["sesion-foto", "escena-video", "casting", "pagina-web"];
+      grupos.forEach(nombre => {
+        const seleccionado = document.querySelector(`input[name="${nombre}"]:checked`);
+        if (seleccionado) {
+          total += parseFloat(seleccionado.value);
+        }
+      });
+
+      document.getElementById("total").innerHTML = `💰 Total: €${total.toFixed(2)}`;
+    }
+
+    // Actualizar total al seleccionar cualquier opción
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.addEventListener("change", calcularTotal);
+    });
+
+    // También al hacer clic en "Enviar"
+    document.getElementById("boton-enviar").addEventListener("click", calcularTotal);
+  </script>
+</body>
+</html>
