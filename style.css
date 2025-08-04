@@ -1,0 +1,189 @@
+/* Evita zoom en móviles */
+html {
+  touch-action: manipulation;
+  -ms-touch-action: manipulation;
+  scroll-behavior: smooth;
+}
+
+/* Estilos generales */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  color: #f0f0f0;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Fondo con imagen y opacidad */
+body::before {
+  content: "";
+  position: fixed; /* 👈 Fijado para evitar que se mueva al hacer scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('foto1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+/* Contenedor del formulario */
+#formulario-container {
+  background-color: rgba(20, 20, 20, 0.85);
+  padding: 30px 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  text-align: left;
+  max-width: 400px;
+  width: 100%;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+/* Títulos */
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+/* Casillas */
+input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+/* Total */
+#total {
+  font-weight: bold;
+  font-size: 20px;
+  color: #00ffcc;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Botón enviar */
+#boton-enviar {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px 0;
+  background-color: #00ffcc;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#boton-enviar:hover {
+  background-color: #00ddb3;
+  transform: scale(1.03);
+}
+
+#boton-enviar:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Etiquetas */
+label {
+  display: block;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid transparent;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+label:hover {
+  background-color: #00ffcc;
+  color: #000;
+  transform: scale(1.03);
+  border-color: #00ffcc;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
+  font-weight: bold;
+}
+
+/* Radios ocultos */
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + label {
+  background-color: #00ffcc;
+  color: #000;
+  font-weight: bold;
+  transform: scale(1.03);
+  border-color: #00ffcc;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
+}
+
+/* Campo de teléfono */
+input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto 20px auto;
+  display: block;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #f0f0f0;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 255, 204, 0.2);
+  box-sizing: border-box;
+}
+
+input[type="tel"]::placeholder {
+  color: #ccc;
+  font-style: italic;
+}
+
+input[type="tel"]:focus {
+  outline: none;
+  background-color: #00ffcc;
+  color: #000;
+  font-weight: bold;
+  border-color: #00ffcc;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
+  transform: scale(1.02);
+}
+
+/* 📱 Responsive para pantallas pequeñas */
+@media screen and (max-width: 480px) {
+  #formulario-container {
+    padding: 20px 15px;
+    border-radius: 10px;
+  }
+
+  label {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  h1, h2 {
+    font-size: 1rem;
+  }
+
+  #boton-enviar {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  input[type="tel"] {
+    font-size: 14px;
+  }
+}
